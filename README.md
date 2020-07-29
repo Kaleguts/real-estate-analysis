@@ -114,7 +114,7 @@ After my earlier visual analysis of the data, I realized that I needed to fix th
 
 After transforming these variables I decided to reassess my model and examine any changes to my previous R-Squared, my error, as well as any correlations of note. 
 
-![Model 3: Log-Transformed Cont. Vars](/readme_Images/third_model_visual.png)
+![Model 3: Log-Transformed Cont. Vars](/readme_Images/third_model_visual.PNG)
 
 ### Notes from Model 3: 
 - The R-Squared decreased from 0.692 to 0.673. 
@@ -124,7 +124,7 @@ After transforming these variables I decided to reassess my model and examine an
 - **The next move is to handle the location information and categorical variables.
 - A visual of Model 3 is below:
 
-![Model 3: Log-Transformed Cont. Vars](/readme_Images/third_model_visual_2.png)
+![Model 3: Log-Transformed Cont. Vars](/readme_Images/third_model_visual_2.PNG)
 
 # The Rest of the Data: Yr_Renovated, Sectors, Zipcodes, and more! 
 
@@ -136,13 +136,13 @@ Most non-0 instances of this column appeared around the year 2000. I created a c
 
 I created a few joint plots to examine the relationship between my variables and price and see if I can gather some more information on linearity. Bathrooms, grade, sqft_living (now logged), and sqft_living_15 (also logged) had pretty solid linear relationships! Good to know moving forward! 
 
-![Joint-Plot of Sqft_Living](/readme_Images/joint_plot_one.png)
+![Joint-Plot of Sqft_Living](/readme_Images/joint_plot_one.jpg)
 
-![Joint-Plot of Sqft_Living15](/readme_Images/joint_plot_two.png)
+![Joint-Plot of Sqft_Living15](/readme_Images/joint_plot_two.jpg)
 
-![Joint-Plot of Grade](/readme_Images/joint_plot_three.png)
+![Joint-Plot of Grade](/readme_Images/joint_plot_three.jpg)
 
-![Joint-Plot of Bathrooms](/readme_Images/joint_plot_four.png)
+![Joint-Plot of Bathrooms](/readme_Images/joint_plot_four.jpg)
 
 ## Binning: Yes to Year Built, No to Zipcodes
 
@@ -158,7 +158,7 @@ In addition to zipcode data I wanted to create columns that gave more meaning to
 
 Before I handled the rest of the categorical variables, I created a heat map to check on the correlations between my features. If a feature has a high correlation with another feature, it will interfere with the model's ability to predict accurately if both features are included. However, if I remove one of the features when I create the model, it will allow for less multicollinearity which is part of what we are looking for in a proper linear regression model. 
 
-![Heat Map of Multicollinearity](/readme_Images/mc_heatmap_one.png)
+![Heat Map of Multicollinearity](/readme_Images/mc_heatmap_one.jpg)
 
 Here we can see that there are major issues between longitude and day_of_year as well as sqft_lot & sqf_lot15 and sqft_above and sqft_living. This will inform future decisions in my modeling. 
 
@@ -170,7 +170,7 @@ First, I shifted the type of my categorical variables to "category" and then I g
 
 The following visual is a series of histograms of the majority of the variables. You can see that many new binary columns have been created. After this, I eliminated all columns that were equal to 0. 
 
-![Histogram of Some Dummy Columns](/readme_Images/dummy_hist.png)
+![Histogram of Some Dummy Columns](/readme_Images/dummy_hist.jpg)
 
 I log transformed a few more variables (price, bedrooms, and bathrooms) and then used a technique called min-max scale to create normalization among all log-transformed variables. 
 
@@ -184,9 +184,9 @@ After normalizing my non-categorical variables, I created histograms and KDE plo
 
 The following visual is the histogram + KDE plot and the joint plot of the sqft_living variable:
 
-![Histogram & KDE of SqFt_Living](/readme_Images/sqft_living_hist_kde.png)
+![Histogram & KDE of SqFt_Living](/readme_Images/sqft_living_hist_kde.jpg)
 
-![Final Joint Plot of SqFt_Living](/readme_Images/joint_plot_sqft_living_final.png)
+![Final Joint Plot of SqFt_Living](/readme_Images/joint_plot_sqft_living_final.jpg)
 
 # Model 4 (Potentially the First "Official" Model?)
 
@@ -197,13 +197,13 @@ After the data was completely dealt with, I created a model that gave me some in
 
 Here is the visualization:
 
-![Model 4 Visualization](readme_Images/fourth_model_visual.png)
+![Model 4 Visualization](readme_Images/fourth_model_visual.jpg)
 
 I checked for normality and homoscedasticity (as visualized, respectively, below) and things seem pretty good! The QQ Plot shows some heaviness in either end of the tails caused by, I imagine, the outliers, and the second plot shows consistent homoscedasticity. 
 
-![Normality Check](/readme_Images/normality_check_1.png)
+![Normality Check](/readme_Images/normality_check_1.jpg)
 
-![Homoscedasticity Check](/readme_Images/hs_check_1.png)
+![Homoscedasticity Check](/readme_Images/hs_check_1.jpg)
 
 # Was Model 4 too good to be true? Possibly. 
 
@@ -211,7 +211,7 @@ I checked for normality and homoscedasticity (as visualized, respectively, below
 
 After the celebration of the initial findings died down I realized that I needed to check for multicollinearity! What would the model look like if I removed variables that correlated with one another? I quickly created a heat map and made some discoveries. 
 
-![Heat map for Multicollinearity](/readme_Images/md_heatmap_two.png)
+![Heat map for Multicollinearity](/readme_Images/mc_heatmap_two.jpg)
 
 Correlation Alarms: Bathrooms with log_sqft_lot15, day_of_year and month, log_sqft_above, log_sqft_living, log_sqft_living15
 
@@ -224,11 +224,11 @@ This had a **huge** effect! Multicollinearity dropped a lot (I know this because
 
 The R-Squared value remained high at 0.788 and the errors were low. This was the model I was looking for. The end had come. 
 
-![Final Model R-Squared](/readme_Images/final_model_R.png)
+![Final Model R-Squared](/readme_Images/final_model_R.jpg)
 
-![Final Model Multicollinearity (Cond. No.)](/readme_Images/final_model_CN.png)
+![Final Model Multicollinearity (Cond. No.)](/readme_Images/final_model_CN.jpg)
 
-![Final Model Error (Cond. No.)](/readme_Images/final_model_Error.png)
+![Final Model Error (Cond. No.)](/readme_Images/final_model_Error.jpg)
 
 # Now for Our Clients
 
